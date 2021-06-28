@@ -46,14 +46,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    phoneheight = MediaQuery.of(context).size.height;
-    phonewidth = MediaQuery.of(context).size.width;
-    print("height");
-    print(phoneheight);
-    print("width");
-    print(phonewidth);
-    print("_welcomeHeight");
-    print(_welcomeHeight);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -66,38 +58,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: <Widget>[
               ImageHandler(logo),
               ImageHandler(logo),
-              ImageHandler(logo)
             ],
           ),
           Positioned(
-            top: (310 / 683) * MediaQuery.of(context).size.height,
+            bottom: 10,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 170),
+              child: Column(
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: Row(children: [
-                            SizedBox(
-                              width: (140 / 360) *
-                                  MediaQuery.of(context).size.width,
-                            ),
-                            for (int i = 0; i < _totalPages; i++)
-                              i == _currentPage
-                                  ? PageIndicator(true)
-                                  : PageIndicator(false)
-                          ]),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      for (int i = 0; i < _totalPages; i++)
+                        i == _currentPage
+                            ? PageIndicator(true)
+                            : PageIndicator(false)
+                    ],
                   ),
                 ],
               ),
@@ -105,226 +80,336 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           if (_currentPage == 0)
             Positioned(
-              top: (350 / 683) * MediaQuery.of(context).size.height,
-              child: Container(
-                height: (300 / 592) * MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
+                bottom: 50,
                 child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 16, right: 16, top: 0),
-                        child: Text(
-                          "Welcome to the KNQA Recognition of Prior Learning Portal",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                  padding: const EdgeInsets.symmetric(horizontal: 165),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "NEXT  ",
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, top: 0, bottom: 20),
-                        child: Text(
-                          "Get your qualification here",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
+                        WidgetSpan(
+                          child: CircleAvatar(
+                              radius: 8,
+                              backgroundColor: Colors.white,
+                              child:
+                                  Icon(Icons.arrow_forward_rounded, size: 14)),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 0.0, left: 16, right: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: ButtonTheme(
-                                height: (50 / 683) *
-                                    MediaQuery.of(context).size.height,
-                                child: RaisedButton(
-                                  color: Colors.white,
-                                  onPressed: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (BuildContext context) =>
-                                    //             Welcome()));
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side: BorderSide(color: Colors.blue)),
-                                  child: Text(
-                                    'Create Account',
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                                width: (13 / 411) *
-                                    MediaQuery.of(context).size.width),
-                            Expanded(
-                              child: ButtonTheme(
-                                height: (50 / 683) *
-                                    MediaQuery.of(context).size.height,
-                                child: RaisedButton(
-                                  color: Colors.blue,
-                                  onPressed: () {
-                                    // _pageController.animateToPage(
-                                    //     _currentPage + 1,
-                                    //     duration: Duration(milliseconds: 400),
-                                    //     curve: Curves.linear);
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side:
-                                          BorderSide(color: Colors.lightBlue)),
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+                )),
+          Positioned(
+            bottom: 150,
+            child: Container(
+              height: (300 / 592) * MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 0),
+                      child: Text(
+                        "Welcome to",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "the KNQA",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Recognition of",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Prior Learning",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Portal .",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30, right: 30, top: 20, bottom: 20),
+                      child: Text(
+                        "Get your qualification here",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 30, left: 16, right: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: ButtonTheme(
+                              child: RaisedButton(
+                                color: Colors.orange,
+                                onPressed: () {
+                                  // Navigator.of(context).push(
+                                  //     MaterialPageRoute(
+                                  //         builder: (BuildContext context) =>
+                                  //             Welcome()));
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: Colors.blue)),
+                                child: Text(
+                                  'Create Account',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                              width: (13 / 411) *
+                                  MediaQuery.of(context).size.width),
+                          Expanded(
+                            child: ButtonTheme(
+                              child: RaisedButton(
+                                color: Colors.deepPurple[600],
+                                onPressed: () {
+                                  // _pageController.animateToPage(
+                                  //     _currentPage + 1,
+                                  //     duration: Duration(milliseconds: 400),
+                                  //     curve: Curves.linear);
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: Colors.lightBlue)),
+                                child: Text(
+                                  'Log in',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
+          ),
           if (_currentPage == 1)
             Positioned(
-              top: (350 / 683) * MediaQuery.of(context).size.height,
-              child: Container(
-                height: (300 / 592) * MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      topLeft: Radius.circular(20)),
-                ),
+                bottom: 50,
                 child: Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 16, right: 16, top: 0),
-                        child: Text(
-                          "Sewage water",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
+                  padding: const EdgeInsets.symmetric(horizontal: 165),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "NEXT  ",
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 16, right: 16, top: 0),
-                        child: Text(
-                          "Services",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
+                        WidgetSpan(
+                          child: CircleAvatar(
+                              radius: 8,
+                              backgroundColor: Colors.white,
+                              child:
+                                  Icon(Icons.arrow_forward_rounded, size: 14)),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 16, right: 16, top: 0, bottom: 20),
-                        child: Text(
-                          "Sewage disposal services for offices and residential properties",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 0.0, left: 16, right: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: ButtonTheme(
-                                height: (50 / 683) *
-                                    MediaQuery.of(context).size.height,
-                                child: RaisedButton(
-                                  color: Colors.white,
-                                  onPressed: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (BuildContext context) =>
-                                    //             Welcome()));
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side: BorderSide(color: Colors.blue)),
-                                  child: Text(
-                                    'Skip',
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                                width: (13 / 411) *
-                                    MediaQuery.of(context).size.width),
-                            Expanded(
-                              child: ButtonTheme(
-                                height: (50 / 683) *
-                                    MediaQuery.of(context).size.height,
-                                child: RaisedButton(
-                                  color: Colors.blue,
-                                  onPressed: () {
-                                    _pageController.animateToPage(
-                                        _currentPage + 1,
-                                        duration: Duration(milliseconds: 400),
-                                        curve: Curves.linear);
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side:
-                                          BorderSide(color: Colors.lightBlue)),
-                                  child: Text(
-                                    'Next',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+                )),
+          Positioned(
+            bottom: 150,
+            child: Container(
+              height: (300 / 592) * MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 0),
+                      child: Text(
+                        "Welcome to",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "the KNQA",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Recognition of",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Prior Learning",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 30, right: 30, top: 10),
+                      child: Text(
+                        "Portal .",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30, right: 30, top: 20, bottom: 20),
+                      child: Text(
+                        "Get your qualification here",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 30, left: 16, right: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: ButtonTheme(
+                              child: RaisedButton(
+                                color: Colors.orange,
+                                onPressed: () {
+                                  // Navigator.of(context).push(
+                                  //     MaterialPageRoute(
+                                  //         builder: (BuildContext context) =>
+                                  //             Welcome()));
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: Colors.blue)),
+                                child: Text(
+                                  'Create Account',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                              width: (13 / 411) *
+                                  MediaQuery.of(context).size.width),
+                          Expanded(
+                            child: ButtonTheme(
+                              child: RaisedButton(
+                                color: Colors.deepPurple[600],
+                                onPressed: () {
+                                  // _pageController.animateToPage(
+                                  //     _currentPage + 1,
+                                  //     duration: Duration(milliseconds: 400),
+                                  //     curve: Curves.linear);
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: Colors.lightBlue)),
+                                child: Text(
+                                  'Log in',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
+          ),
           _loader(context),
         ],
       ),

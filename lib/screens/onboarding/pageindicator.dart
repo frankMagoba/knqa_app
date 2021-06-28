@@ -19,9 +19,9 @@ class PageIndicator extends StatelessWidget {
       duration: Duration(milliseconds: 350),
       margin: EdgeInsets.symmetric(horizontal: 5.0),
       height: 10.0,
-      width: currentpage ? 30.0 : 10.0,
+      width: 10,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: currentpage ? Colors.orange : Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
