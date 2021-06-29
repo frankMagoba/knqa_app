@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:knqa_app/screens/onboarding/onboarding.dart';
+import 'package:knqa_app/screens/signup/signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -55,14 +57,20 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: CircleAvatar(
-                    radius: 14,
-                    backgroundColor: Colors.black,
-                    child: Icon(
-                      Icons.arrow_back_rounded,
-                      size: 20,
-                      color: Colors.white,
-                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => OnboardingScreen()));
+                  },
+                  child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.black,
+                      child: Icon(
+                        Icons.arrow_back_rounded,
+                        size: 20,
+                        color: Colors.white,
+                      )),
+                ),
               ),
             )),
         Container(
@@ -106,98 +114,108 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 270),
-                    child: Text(
-                      "Phone",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                    ),
-                  ),
-                  Padding(
                       padding:
                           EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          Flexible(
-                            child: TextFormField(
-                              controller: phoneController,
-                              decoration: InputDecoration(
-                                fillColor: Colors.white54.withOpacity(0.3),
-                                filled: true,
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 2.0, horizontal: 10.0),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.deepPurple, width: 3.0),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 0.0),
-                                ),
-                                border: OutlineInputBorder(),
-                                labelText: "Phone",
-                                labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: "sf-ui",
-                                    fontSize: 14),
-                              ),
-                              enabled: true,
-                              autofocus: true,
-                              onChanged: (String value) {
-                                phone = value.trim();
-                              },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Phone",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
                             ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.white54.withOpacity(0.3),
+                                    filled: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.0, horizontal: 10.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.deepPurple, width: 3.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 0.0),
+                                    ),
+                                    border: OutlineInputBorder(),
+                                    labelText: "Phone",
+                                    labelStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "sf-ui",
+                                        fontSize: 14),
+                                  ),
+                                  enabled: true,
+                                  autofocus: true,
+                                  onChanged: (String value) {
+                                    phone = value.trim();
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       )),
                   Padding(
-                    padding: const EdgeInsets.only(right: 245, top: 30),
-                    child: Text(
-                      "Password",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                    ),
-                  ),
-                  Padding(
                       padding:
                           EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          Flexible(
-                            child: TextFormField(
-                              controller: phoneController,
-                              decoration: InputDecoration(
-                                fillColor: Colors.white54.withOpacity(0.3),
-                                filled: true,
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 2.0, horizontal: 10.0),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.deepPurple, width: 3.0),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 0.0),
-                                ),
-                                border: OutlineInputBorder(),
-                                labelText: "Password",
-                                labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: "sf-ui",
-                                    fontSize: 14),
-                              ),
-                              enabled: true,
-                              autofocus: true,
-                              onChanged: (String value) {
-                                phone = value.trim();
-                              },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Password",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
                             ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.white54.withOpacity(0.3),
+                                    filled: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.0, horizontal: 10.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.deepPurple, width: 3.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 0.0),
+                                    ),
+                                    border: OutlineInputBorder(),
+                                    labelText: "Password",
+                                    labelStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "sf-ui",
+                                        fontSize: 14),
+                                  ),
+                                  enabled: true,
+                                  autofocus: true,
+                                  onChanged: (String value) {
+                                    phone = value.trim();
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       )),
@@ -243,13 +261,19 @@ class _LoginState extends State<Login> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Text(
-                      "Create account",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.deepPurple[700]),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => SignUp()));
+                      },
+                      child: Text(
+                        "Create account",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.deepPurple[700]),
+                      ),
                     ),
                   ),
                 ],

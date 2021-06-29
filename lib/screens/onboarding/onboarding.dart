@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:knqa_app/screens/login/login.dart';
 import 'package:knqa_app/screens/onboarding/bottombar.dart';
 import 'package:knqa_app/screens/onboarding/pageindicator.dart';
+import 'package:knqa_app/screens/signup/signup.dart';
 import 'package:knqa_app/utilities/assets.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -205,10 +206,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 child: RaisedButton(
                                   color: Colors.orange,
                                   onPressed: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (BuildContext context) =>
-                                    //             Welcome()));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                SignUp()));
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5.0),
@@ -312,10 +313,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 child: RaisedButton(
                                   color: Colors.orange,
                                   onPressed: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (BuildContext context) =>
-                                    //             Welcome()));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                SignUp()));
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5.0),
