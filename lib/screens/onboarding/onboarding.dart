@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knqa_app/screens/login/login.dart';
 import 'package:knqa_app/screens/onboarding/bottombar.dart';
 import 'package:knqa_app/screens/onboarding/pageindicator.dart';
 import 'package:knqa_app/utilities/assets.dart';
@@ -229,10 +230,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 child: RaisedButton(
                                   color: Colors.deepPurple[600],
                                   onPressed: () {
-                                    // _pageController.animateToPage(
-                                    //     _currentPage + 1,
-                                    //     duration: Duration(milliseconds: 400),
-                                    //     curve: Curves.linear);
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Login()));
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5.0),
@@ -336,10 +337,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 child: RaisedButton(
                                   color: Colors.deepPurple[600],
                                   onPressed: () {
-                                    // _pageController.animateToPage(
-                                    //     _currentPage + 1,
-                                    //     duration: Duration(milliseconds: 400),
-                                    //     curve: Curves.linear);
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                Login()));
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5.0),
