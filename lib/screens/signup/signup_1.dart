@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knqa_app/screens/onboarding/onboarding.dart';
+import 'package:knqa_app/screens/signup/signup_2.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -351,7 +352,7 @@ class _SignUpState extends State<SignUp> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0),
                             child: Text(
-                              "identification number/Passport *",
+                              "Identification number/Passport *",
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.normal,
@@ -401,8 +402,8 @@ class _SignUpState extends State<SignUp> {
                       child: RaisedButton(
                         color: Colors.deepPurple[600],
                         onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (BuildContext context) => Login()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => SignUp2()));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),

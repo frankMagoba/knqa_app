@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:knqa_app/screens/login/login.dart';
 import 'package:knqa_app/screens/onboarding/bottombar.dart';
 import 'package:knqa_app/screens/onboarding/pageindicator.dart';
-import 'package:knqa_app/screens/signup/signup.dart';
+import 'package:knqa_app/screens/signup/signup_1.dart';
 import 'package:knqa_app/utilities/assets.dart';
 
 class OnboardingScreen extends StatefulWidget {

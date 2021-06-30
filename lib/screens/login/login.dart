@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knqa_app/screens/onboarding/onboarding.dart';
-import 'package:knqa_app/screens/signup/signup.dart';
+import 'package:knqa_app/screens/signup/signup_1.dart';
 
 class Login extends StatefulWidget {
   @override
