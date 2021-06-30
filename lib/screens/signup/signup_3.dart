@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:knqa_app/screens/signup/signup_1.dart';
-import 'package:knqa_app/screens/signup/signup_3.dart';
+import 'package:knqa_app/screens/signup/signup_2.dart';
 
-class SignUp2 extends StatefulWidget {
+class SignUp3 extends StatefulWidget {
   @override
-  _SignUp2State createState() => _SignUp2State();
+  _SignUp3State createState() => _SignUp3State();
 }
 
-class _SignUp2State extends State<SignUp2> {
+class _SignUp3State extends State<SignUp3> {
   bool loader = false;
   bool male = false;
   bool female = false;
   String dialcode = "254";
-  String phone = "", month = "";
+  String phone = "", country = "";
   double phoneheight = 0;
   double phonewidth = 0;
   FocusNode _focus = new FocusNode();
@@ -20,22 +19,10 @@ class _SignUp2State extends State<SignUp2> {
   Map response = new Map();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
-  List<String> _months = [
-    "Month",
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+  List<String> _countries = [
+    "Select Country",
   ];
-  String _selectedMonth = "Month";
+  String _selectedCountry = "Select Country";
 
   @override
   void initState() {
@@ -78,7 +65,7 @@ class _SignUp2State extends State<SignUp2> {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => SignUp()));
+                        builder: (BuildContext context) => SignUp2()));
                   },
                   child: CircleAvatar(
                       radius: 14,
@@ -103,7 +90,7 @@ class _SignUp2State extends State<SignUp2> {
                   child: Column(
                 children: [
                   Text(
-                    "Step 2 of 3",
+                    "Step 3 of 3",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontSize: 13,
@@ -144,7 +131,7 @@ class _SignUp2State extends State<SignUp2> {
             child: new Container(
                 margin: const EdgeInsets.only(right: 0.0),
                 child: Divider(
-                  color: Colors.black,
+                  color: Colors.green,
                   height: 5,
                   thickness: 3,
                 )),
@@ -168,216 +155,7 @@ class _SignUp2State extends State<SignUp2> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0),
                             child: Text(
-                              "Date of Birth *",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 25.0),
-                            child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Container(
-                                    decoration: ShapeDecoration(
-                                      shape: RoundedRectangleBorder(
-                                        side: BorderSide(
-                                            style: BorderStyle.solid),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(3.0)),
-                                      ),
-                                    ),
-                                    child: DropdownButton(
-                                      dropdownColor: Colors.pink[50],
-                                      isExpanded: true,
-                                      hint: Text(
-                                        'Month',
-                                      ),
-                                      value: _selectedMonth,
-                                      onChanged: (newValue) {
-                                        setState(() {
-                                          month = _selectedMonth;
-                                        });
-                                      },
-                                      items: _months.map((mon) {
-                                        return DropdownMenuItem(
-                                          child: new Text(mon),
-                                          value: mon,
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: TextFormField(
-                                      controller: phoneController,
-                                      decoration: InputDecoration(
-                                        fillColor:
-                                            Colors.white54.withOpacity(0.3),
-                                        filled: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 2.0, horizontal: 10.0),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.deepPurple,
-                                              width: 3.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.black, width: 0.0),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        labelText: "Day",
-                                        labelStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "sf-ui",
-                                            fontSize: 14),
-                                      ),
-                                      enabled: true,
-                                      autofocus: true,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: phoneController,
-                                    decoration: InputDecoration(
-                                      fillColor:
-                                          Colors.white54.withOpacity(0.3),
-                                      filled: true,
-                                      contentPadding: EdgeInsets.symmetric(
-                                          vertical: 2.0, horizontal: 10.0),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.deepPurple,
-                                            width: 3.0),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black, width: 0.0),
-                                      ),
-                                      border: OutlineInputBorder(),
-                                      labelText: "Year",
-                                      labelStyle: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: "sf-ui",
-                                          fontSize: 14),
-                                    ),
-                                    enabled: true,
-                                    autofocus: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )),
-                  Padding(
-                      padding:
-                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Text(
-                              "Gender *",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 25.0, top: 12.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(right: 10),
-                                    child: TextFormField(
-                                      controller: phoneController,
-                                      decoration: InputDecoration(
-                                        fillColor:
-                                            Colors.white54.withOpacity(0.3),
-                                        filled: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 2.0, horizontal: 10.0),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.deepPurple,
-                                              width: 3.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.black, width: 0.0),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        labelText: "Male",
-                                        labelStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "sf-ui",
-                                            fontSize: 14),
-                                      ),
-                                      enabled: true,
-                                      autofocus: true,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: TextFormField(
-                                      controller: phoneController,
-                                      decoration: InputDecoration(
-                                        fillColor:
-                                            Colors.white54.withOpacity(0.3),
-                                        filled: true,
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 2.0, horizontal: 10.0),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.deepPurple,
-                                              width: 3.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.black, width: 0.0),
-                                        ),
-                                        border: OutlineInputBorder(),
-                                        labelText: "Female",
-                                        labelStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: "sf-ui",
-                                            fontSize: 14),
-                                      ),
-                                      enabled: true,
-                                      autofocus: true,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )),
-                  Padding(
-                      padding:
-                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Text(
-                              "Phone number *",
+                              "Work *",
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.normal,
@@ -404,7 +182,7 @@ class _SignUp2State extends State<SignUp2> {
                                           color: Colors.black, width: 0.0),
                                     ),
                                     border: OutlineInputBorder(),
-                                    labelText: "+xxx 0000 000 000",
+                                    labelText: "Occupation",
                                     labelStyle: TextStyle(
                                         color: Colors.black,
                                         fontFamily: "sf-ui",
@@ -430,7 +208,53 @@ class _SignUp2State extends State<SignUp2> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 10.0),
                             child: Text(
-                              "Email address",
+                              "Nationality *",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Container(
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(style: BorderStyle.solid),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(3.0)),
+                              ),
+                            ),
+                            child: DropdownButton(
+                              dropdownColor: Colors.pink[50],
+                              isExpanded: true,
+                              hint: Text(
+                                'Select Country',
+                              ),
+                              value: _selectedCountry,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  country = _selectedCountry;
+                                });
+                              },
+                              items: _countries.map((con) {
+                                return DropdownMenuItem(
+                                  child: new Text(con),
+                                  value: con,
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
+                      )),
+                  Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Physical Address *",
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.normal,
@@ -457,7 +281,166 @@ class _SignUp2State extends State<SignUp2> {
                                           color: Colors.black, width: 0.0),
                                     ),
                                     border: OutlineInputBorder(),
-                                    labelText: "john@doe.com",
+                                    labelText: "Place of Residence",
+                                    labelStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "sf-ui",
+                                        fontSize: 14),
+                                  ),
+                                  enabled: true,
+                                  autofocus: true,
+                                  onChanged: (String value) {
+                                    phone = value.trim();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                  Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Postal address",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.white54.withOpacity(0.3),
+                                    filled: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.0, horizontal: 10.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.deepPurple, width: 3.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 0.0),
+                                    ),
+                                    border: OutlineInputBorder(),
+                                    labelText: "000000 - 000000",
+                                    labelStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "sf-ui",
+                                        fontSize: 14),
+                                  ),
+                                  enabled: true,
+                                  autofocus: true,
+                                  onChanged: (String value) {
+                                    phone = value.trim();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                  Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Password *",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.white54.withOpacity(0.3),
+                                    filled: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.0, horizontal: 10.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.deepPurple, width: 3.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 0.0),
+                                    ),
+                                    border: OutlineInputBorder(),
+                                    labelText: "**********",
+                                    labelStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "sf-ui",
+                                        fontSize: 14),
+                                  ),
+                                  enabled: true,
+                                  autofocus: true,
+                                  onChanged: (String value) {
+                                    phone = value.trim();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      )),
+                  Padding(
+                      padding:
+                          EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Confirm password *",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Flexible(
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  decoration: InputDecoration(
+                                    fillColor: Colors.white54.withOpacity(0.3),
+                                    filled: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        vertical: 2.0, horizontal: 10.0),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.deepPurple, width: 3.0),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.black, width: 0.0),
+                                    ),
+                                    border: OutlineInputBorder(),
+                                    labelText: "**********",
                                     labelStyle: TextStyle(
                                         color: Colors.black,
                                         fontFamily: "sf-ui",
@@ -480,8 +463,8 @@ class _SignUp2State extends State<SignUp2> {
                       child: RaisedButton(
                         color: Colors.deepPurple[600],
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => SignUp3()));
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //     builder: (BuildContext context) => Login()));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
