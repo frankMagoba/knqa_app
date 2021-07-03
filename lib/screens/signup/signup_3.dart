@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knqa_app/screens/home/home.dart';
 import 'package:knqa_app/screens/signup/signup_2.dart';
 
 class SignUp3 extends StatefulWidget {
@@ -31,7 +32,10 @@ class _SignUp3State extends State<SignUp3> {
   }
 
   void _onFocusChange() {}
-  Future<void> submit() async {}
+  Future<void> submit() async {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) => Home()));
+  }
 
   Widget _loader(context) {
     if (loader == true) {
@@ -458,27 +462,23 @@ class _SignUp3State extends State<SignUp3> {
                         ],
                       )),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40, left: 190),
-                    child: ButtonTheme(
-                      child: RaisedButton(
-                        color: Colors.deepPurple[600],
-                        onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(
-                          //     builder: (BuildContext context) => Login()));
-                        },
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Text(
-                          'NEXT',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                    padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 40),
+                    child: MaterialButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      onPressed: submit,
+                      color: Color(0xfff78a00),
+                      minWidth: 300,
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             )),
